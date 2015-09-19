@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/cmd-js/flag#readme",
   "devDependencies": {
+    "cmd-alias": "^0.1.0",
+    "cmd-handler": "^0.1.0",
     "tap-spec": "^4.1.0",
     "tape": "^4.2.0"
   },
