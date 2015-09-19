@@ -4,6 +4,8 @@ var map = require('ramda/src/map')
 var pickAll = require('ramda/src/pickAll')
 var head = require('ramda/src/head')
 var values = require('ramda/src/values')
+var filter = require('ramda/src/filter')
+var identity = require('ramda/src/identity')
 
 module.exports = function flag () {
 
@@ -34,7 +36,7 @@ module.exports = function flag () {
       options: options,
       args: function (data, flags) { // NOTE: this can be a function or a primitive value
 
-        return values(pickAll(value.alias, flags))
+        return filter(identity, values(pickAll(value.alias, flags)))
       }
     }
   }

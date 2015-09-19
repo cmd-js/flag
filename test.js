@@ -59,5 +59,11 @@ test('custom arguments', function (t) {
     'args function second flag'
   )
 
+  t.deepEqual(
+    f2().args([], {t: 't small'}),
+    ['t small'],
+    'removes undefined values'
+  )
+
   t.end()
 })
