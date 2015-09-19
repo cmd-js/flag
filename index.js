@@ -1,6 +1,9 @@
 var asArray = require('as-array')
 var reduce = require('ramda/src/reduce')
 var map = require('ramda/src/map')
+var pickAll = require('ramda/src/pickAll')
+var head = require('ramda/src/head')
+var values = require('ramda/src/values')
 
 module.exports = function flag () {
 
@@ -23,10 +26,16 @@ module.exports = function flag () {
         return accum
       }, {})
 
+    var value = defineValue(definitions)
+
     return {
       type: 'flag',
-      value: defineValue(definitions),
-      options: options
+      value: value,
+      options: options,
+      args: function (data, flags) { // NOTE: this can be a function or a primitive value
+
+        return values(pickAll(value.alias, flags))
+      }
     }
   }
 }
